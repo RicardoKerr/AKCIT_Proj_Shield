@@ -24,3 +24,13 @@ def test_generate_password_raises_when_no_charset_selected():
 def test_generate_password_raises_when_too_small():
     with pytest.raises(ValueError):
         generate_password(3, True, True, False, False)
+
+
+def test_generate_password_contains_only_allowed_characters():
+    password = generate_password(24, True, False, True, False)
+    assert all(c.isupper() or c.isdigit() for c in password)
+
+
+def test_generate_password_has_variability_between_runs():
+    attempts = {generate_password(14, True, True, True, True) for _ in range(8)}
+    assert len(attempts) > 1
