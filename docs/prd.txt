@@ -1,0 +1,139 @@
+# 📌 PRD — Gerador de Senhas Seguras
+
+## 1. 🎯 Visão do Produto
+Desenvolver uma aplicação simples (CLI ou Web) capaz de gerar senhas seguras, aleatórias e configuráveis, auxiliando usuários a criarem credenciais fortes de forma rápida e confiável.
+
+---
+
+## 2. 🎯 Objetivo
+Permitir que o usuário gere senhas seguras com base em critérios personalizados, garantindo:
+- Aleatoriedade
+- Conformidade com padrões de segurança
+- Facilidade de uso
+
+---
+
+## 3. 👤 Público-Alvo
+- Desenvolvedores
+- Usuários preocupados com segurança digital
+- Profissionais de TI
+
+---
+
+## 4. 💥 Problema
+Usuários frequentemente:
+- Criam senhas fracas ou previsíveis
+- Reutilizam senhas
+- Não possuem ferramentas simples para gerar senhas seguras
+
+---
+
+## 5. ✅ Proposta de Valor
+Uma ferramenta leve e rápida que:
+- Gera senhas fortes sob demanda
+- Permite personalização
+- Não armazena dados sensíveis
+
+---
+
+## 6. 🚀 Escopo do MVP
+
+### Funcionalidades principais
+- Gerar senha aleatória
+- Definir tamanho da senha
+- Incluir/excluir:
+  - Letras maiúsculas
+  - Letras minúsculas
+  - Números
+  - Caracteres especiais
+
+### Funcionalidades adicionais (opcional)
+- Copiar senha (Web)
+- Interface simples (CLI ou Web)
+
+---
+
+## 7. ❌ Fora do Escopo (MVP)
+- Armazenamento de senhas
+- Sistema de login/autenticação
+- Criptografia de dados
+- Interface avançada
+
+---
+
+## 8. 📏 Critérios de Sucesso
+- Senha atende aos critérios definidos pelo usuário
+- Tempo de geração < 1 segundo
+- 100% dos testes automatizados passando
+- Código organizado e documentado
+
+---
+
+## 9. 🤖 Uso de IA
+A IA será utilizada para:
+- Geração de código
+- Criação de testes automatizados
+- Refatoração
+- Geração de documentação (README)
+
+---
+
+## 10. ⚠️ Riscos
+- Uso inadequado de geradores pseudoaleatórios (ex: `random`)
+- Falta de validação dos critérios
+- Senhas previsíveis
+- Baixa cobertura de testes
+
+---
+
+## 11. 🔐 Requisitos Funcionais
+
+| ID | Requisito |
+|----|----------|
+| RF01 | O sistema deve gerar uma senha aleatória |
+| RF02 | O usuário deve definir o tamanho da senha |
+| RF03 | O usuário deve escolher tipos de caracteres |
+| RF04 | O sistema deve garantir pelo menos um caractere de cada tipo selecionado |
+| RF05 | O sistema deve exibir a senha gerada |
+
+---
+
+## 12. ⚙️ Requisitos Não Funcionais
+
+| ID | Requisito |
+|----|----------|
+| RNF01 | O sistema deve gerar senhas em menos de 1 segundo |
+| RNF02 | O sistema deve utilizar gerador criptograficamente seguro (`secrets`) |
+| RNF03 | O código deve ser testável |
+| RNF04 | O sistema não deve armazenar senhas |
+| RNF05 | O projeto deve seguir boas práticas de versionamento |
+
+---
+
+## 13. 🧪 Testabilidade
+- Testes unitários para validação de critérios
+- Testes de consistência de tamanho
+- Testes de inclusão/exclusão de caracteres
+- Execução automatizada via framework (pytest/jest)
+
+---
+
+## 14. 📦 Entregáveis
+- Código-fonte no GitHub
+- README completo
+- Testes automatizados
+- Arquivo de dependências
+- Tag de versão (v1.0.0)
+
+---
+
+## 15. 🔄 Roadmap Futuro (Pós-MVP)
+- Interface web mais robusta
+- Indicador de força da senha
+- Integração com gerenciadores de senha
+- API pública
+
+---
+
+## 16. 📌 Considerações Finais
+O foco do MVP é simplicidade com qualidade. O projeto deve demonstrar domínio técnico, boas práticas de engenharia de software e uso estratégico de IA como apoio ao desenvolvimento.

@@ -1,0 +1,233 @@
+# ⚙️ SPEC — Especificação Técnica
+## Gerador de Senhas Seguras
+
+---
+
+## 1. 🏗️ Arquitetura
+
+### 1.1 Visão Geral
+Aplicação simples com foco em execução local via CLI (MVP).
+
+Usuário → CLI → Módulo de Geração → Saída (Senha)
+
+
+### 1.2 Estilo Arquitetural
+- Modular
+- Baixo acoplamento
+- Alta coesão
+
+---
+
+## 2. 🧩 Stack Tecnológica
+
+### Opção principal (recomendada)
+- Python 3.12+
+- argparse ou click (CLI)
+- pytest (testes)
+
+### Alternativa
+- Node.js
+- commander.js
+- jest
+
+---
+
+## 3. 📁 Estrutura do Projeto
+
+
+/password-generator
+├── main.py
+├── generator/
+│ └── password_generator.py
+├── tests/
+│ └── test_password_generator.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+
+
+---
+
+## 4. 🔐 Regras de Geração de Senha
+
+### 4.1 Fonte de Aleatoriedade
+- Utilizar `secrets` (Python)
+- ❌ Não utilizar `random`
+
+### 4.2 Conjuntos de Caracteres
+
+| Tipo        | Exemplo                  |
+|------------|--------------------------|
+| Lowercase  | abcdefghijklmnopqrstuvwxyz |
+| Uppercase  | ABCDEFGHIJKLMNOPQRSTUVWXYZ |
+| Numbers    | 0123456789               |
+| Symbols    | !@#$%^&*()_+-=           |
+
+---
+
+### 4.3 Regras obrigatórias
+- Deve incluir pelo menos 1 caractere de cada tipo selecionado
+- Deve respeitar o tamanho definido
+- Deve embaralhar os caracteres finais (shuffle)
+
+---
+
+## 5. 📥 Interface de Entrada (CLI)
+
+### Exemplo de comando:
+
+python main.py --length 12 --uppercase --lowercase --numbers --symbols
+
+
+### Parâmetros
+
+| Parâmetro   | Tipo | Obrigatório | Descrição |
+|------------|------|------------|----------|
+| --length   | int  | sim        | Tamanho da senha |
+| --uppercase| flag | não        | Incluir letras maiúsculas |
+| --lowercase| flag | não        | Incluir letras minúsculas |
+| --numbers  | flag | não        | Incluir números |
+| --symbols  | flag | não        | Incluir caracteres especiais |
+
+---
+
+## 6. 📤 Saída
+
+Senha gerada: A8#kLm2!qP9z
+
+
+---
+
+## 7. 🧠 Lógica de Implementação
+
+### Fluxo:
+
+1. Validar parâmetros de entrada
+2. Construir pool de caracteres
+3. Garantir inclusão mínima por tipo
+4. Gerar caracteres restantes
+5. Embaralhar resultado
+6. Retornar senha
+
+---
+
+## 8. 🧪 Estratégia de Testes
+
+### 8.1 Testes Unitários
+- Validação do tamanho da senha
+- Inclusão de tipos selecionados
+- Exclusão de tipos não selecionados
+
+### 8.2 Testes de Segurança
+- Execuções consecutivas geram resultados diferentes
+- Não há padrões previsíveis
+
+### 8.3 Ferramenta
+- pytest
+
+---
+
+## 9. ⚠️ Tratamento de Erros
+
+| Cenário | Ação |
+|--------|------|
+| length < 4 | lançar erro |
+| nenhum tipo selecionado | lançar erro |
+| input inválido | exibir mensagem amigável |
+
+---
+
+## 10. 🔐 Segurança
+
+- Uso de `secrets.choice`
+- Não persistir senhas
+- Não logar senhas
+- Não expor dados sensíveis
+
+---
+
+## 11. 📊 Performance
+
+- Tempo de resposta esperado: < 1 segundo
+- Complexidade: O(n)
+
+---
+
+## 12. 🔄 Versionamento
+
+- Padrão: Conventional Commits
+- Exemplo:
+  - feat: add password generator
+  - test: add unit tests
+
+---
+
+## 13. 🚀 Build e Execução
+
+### Instalação
+
+pip install -r requirements.txt
+
+
+### Execução
+python main.py --length 12 --uppercase --numbers
+
+
+### Testes
+
+pytest
+
+
+---
+
+## 14. 📦 Deploy
+
+### MVP
+- Execução local
+
+### Futuro
+- Web deploy (Vercel / Render)
+- API REST
+
+---
+
+## 15. 🔖 Versionamento de Release
+
+- Criar tag:
+v1.0.0
+
+
+---
+
+## 16. 📚 Documentação
+
+README deve conter:
+- Descrição
+- Instalação
+- Uso
+- Exemplos
+- Testes
+- Limitações
+
+---
+
+## 17. 🤖 Uso de IA no Desenvolvimento
+
+- Geração da função principal
+- Criação de testes automatizados
+- Sugestões de refatoração
+- Geração de documentação
+
+---
+
+## 18. 🔮 Extensões Futuras
+
+- Indicador de força da senha
+- Interface web
+- API pública
+- Integração com gerenciadores de senha
+
+---
+
+

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Senhas Seguras</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <h1>Gerador de Senhas Seguras</h1>
+    <p>Defina os criterios abaixo e gere uma senha forte em segundos.</p>
+
+    <form method="post" action="/generate" class="card">
+      <label for="length">Tamanho da senha</label>
+      <input id="length" name="length" type="number" min="4" max="128" value="12" required>
+
+      <div class="options">
+        <label><input type="checkbox" name="uppercase" checked> Maiusculas (A-Z)</label>
+        <label><input type="checkbox" name="lowercase" checked> Minusculas (a-z)</label>
+        <label><input type="checkbox" name="numbers" checked> Numeros (0-9)</label>
+        <label><input type="checkbox" name="symbols" checked> Simbolos (!@#$)</label>
+      </div>
+
+      <button type="submit">Gerar senha</button>
+    </form>
+
+    {% if password %}
+    <section class="result success">
+      <h2>Senha gerada</h2>
+      <code>{{ password }}</code>
+    </section>
+    {% endif %}
+
+    {% if error %}
+    <section class="result error">
+      <h2>Erro</h2>
+      <p>{{ error }}</p>
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>
