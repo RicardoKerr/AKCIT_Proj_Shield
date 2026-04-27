@@ -28,7 +28,9 @@
     {% if password %}
     <section class="result success">
       <h2>Senha gerada</h2>
-      <code>{{ password }}</code>
+      <code id="generatedPassword">{{ password }}</code>
+      <button type="button" id="copyButton" class="secondary">Copiar senha</button>
+      <p id="copyStatus" aria-live="polite"></p>
     </section>
     {% endif %}
 
@@ -39,5 +41,21 @@
     </section>
     {% endif %}
   </main>
+  <script>
+    const copyButton = document.getElementById("copyButton");
+    const copyStatus = document.getElementById("copyStatus");
+    const passwordElement = document.getElementById("generatedPassword");
+
+    if (copyButton && copyStatus && passwordElement) {
+      copyButton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(passwordElement.textContent);
+          copyStatus.textContent = "Senha copiada com sucesso.";
+        } catch {
+          copyStatus.textContent = "Nao foi possivel copiar automaticamente.";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
